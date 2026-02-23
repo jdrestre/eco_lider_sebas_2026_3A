@@ -5,19 +5,14 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Sebastián Restrepo Luna – Eco-Líder 2026 | 3°A</title>
   <meta name="description" content="Campaña de Sebastián Restrepo Luna para Representante de Grupo 3°A – Colegio Benedictino de Santa María, Medellín 2026." />
-
-  <!-- Fonts: Nunito (headings, playful) + Poppins (body, clean) -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700;800;900&family=Poppins:wght@400;500;600&display=swap" rel="stylesheet" />
-
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700;800;900&family=Poppins:wght@400;500;600&family=Share+Tech+Mono&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="assets/css/styles.css" />
 </head>
 <body>
 
-  <!-- ═══════════════════════════════════════════
-       NAVBAR
-  ═══════════════════════════════════════════ -->
+  <!-- ═══ NAVBAR ═══ -->
   <nav class="navbar" id="navbar">
     <div class="nav-brand">
       <img src="assets/img/logo_colegio.png" alt="Logo Colegio Benedictino de Santa María" class="nav-logo" />
@@ -34,50 +29,76 @@
     </button>
   </nav>
 
-  <!-- ═══════════════════════════════════════════
-       HERO
-  ═══════════════════════════════════════════ -->
+  <!-- ═══ HERO ═══ -->
   <section class="hero" id="inicio">
-    <!-- Decorative blobs -->
-    <div class="blob blob-1"></div>
-    <div class="blob blob-2"></div>
+    <!-- Tech particles canvas -->
+    <canvas id="techCanvas" class="tech-canvas"></canvas>
+
+    <!-- Floating leaves (más grandes y visibles) -->
     <div class="leaf leaf-1">🌿</div>
     <div class="leaf leaf-2">🍃</div>
     <div class="leaf leaf-3">🌱</div>
+    <div class="leaf leaf-4">🌿</div>
+    <div class="leaf leaf-5">🍃</div>
 
     <div class="hero-inner">
+
+      <!-- IZQUIERDA: texto -->
       <div class="hero-text">
-        <p class="hero-greeting">¡Hola, grado 3°A! 👋</p>
-        <h1 class="hero-title">
-          Liderazgo Verde,<br />
-          <span class="highlight">Futuro Brillante</span>
-        </h1>
-        <!-- ✏️ EDITAR SLOGAN AQUÍ -->
-        <p class="hero-slogan">
-          "Tecnología con corazón verde y liderazgo responsable."
-        </p>
+        <!-- Slogan principal con typing — es el TÍTULO protagonista -->
+        <div class="slogan-wrap">
+          <span class="slogan-chip">💡 Propuesta 2026</span>
+          <h1 class="hero-slogan-main">
+            "<span id="typingText"></span><span class="cursor">|</span>"
+          </h1>
+        </div>
+
+        <!-- Subtítulo -->
+        <h2 class="hero-subtitle">Liderazgo Verde, Futuro Brillante</h2>
+
         <p class="hero-desc">
-          Soy <strong>Sebastián Restrepo Luna</strong>, tu candidato a Representante de Grupo.<br />
-          Juntos haremos de nuestro salón un lugar más organizado,<br />tecnológico y amigo del planeta. 🌍
+          ¡Hola, grado 3°A! 👋 Soy <strong>Sebastián Restrepo Luna</strong>,
+          tu candidato a Representante de Grupo.<br />
+          Juntos haremos de nuestro salón un lugar más organizado,
+          tecnológico y amigo del planeta. 🌍
         </p>
+
         <div class="hero-btns">
           <a href="#propuestas" class="btn btn-primary">🌿 Ver mis propuestas</a>
-          <a href="#vota" class="btn btn-outline">¡Cuento con tu voto!</a>
+          <a href="#vota" class="btn btn-vote" id="btnVote">
+            <span class="btn-vote-inner">¡Cuento con tu voto! 🗳️</span>
+            <span class="btn-vote-shine"></span>
+          </a>
         </div>
       </div>
 
+      <!-- DERECHA: foto protagonista tipo banner completo -->
       <div class="hero-photo-wrap">
-        <!-- ✏️ REEMPLAZA foto_sebastian.png con la foto real -->
-        <div class="hero-photo-ring">
+        <div class="hero-photo-frame">
+          <!-- Aura animada -->
+          <div class="photo-aura"></div>
+          <!-- Imagen completa, sin recorte circular -->
           <img
             src="assets/img/foto_sebastian.png"
             alt="Sebastián Restrepo Luna – Candidato 3°A"
             class="hero-photo"
-            onerror="this.parentElement.classList.add('photo-placeholder')"
           />
-          <div class="photo-badge">Candidato 3°A 🌱</div>
+          <!-- Badge flotante con nombre -->
+          <div class="photo-name-badge">
+            <span class="badge-name">Sebastián Restrepo Luna</span>
+            <span class="badge-grade">Candidato · 3°A · 2026 🌱</span>
+          </div>
+          <!-- Esquinas tech animadas -->
+          <div class="corner corner-tl"></div>
+          <div class="corner corner-tr"></div>
+          <div class="corner corner-bl"></div>
+          <div class="corner corner-br"></div>
+          <!-- Etiqueta tech flotante -->
+          <div class="tech-tag tech-tag-1">💻 Tech</div>
+          <div class="tech-tag tech-tag-2">🌿 Eco</div>
         </div>
       </div>
+
     </div>
 
     <div class="hero-scroll-hint">
@@ -86,9 +107,7 @@
     </div>
   </section>
 
-  <!-- ═══════════════════════════════════════════
-       PROPUESTAS
-  ═══════════════════════════════════════════ -->
+  <!-- ═══ PROPUESTAS ═══ -->
   <section class="proposals" id="propuestas">
     <div class="container">
       <div class="section-header">
@@ -96,64 +115,48 @@
         <h2 class="section-title">5 Propuestas para 3°A</h2>
         <div class="section-line"></div>
       </div>
-
       <div class="cards-grid">
-
-        <!-- CARD 1 -->
         <article class="card" data-delay="0">
-          <div class="card-icon" style="--icon-bg:#e8f5e9; --icon-color:#2d6a4f;">🌱</div>
+          <div class="card-icon" style="--icon-bg:#e8f5e9;--icon-color:#2d6a4f;">🌱</div>
           <h3 class="card-title">El Guardián Verde</h3>
           <p class="card-desc">Cuidaremos una planta en el salón con turnos semanales organizados digitalmente. ¡Responsabilidad, trabajo en equipo y aire puro para todos!</p>
           <span class="eco-badge">🌍 Factor Eco: mejora el aire del salón y enseña cuidado ambiental</span>
         </article>
-
-        <!-- CARD 2 -->
         <article class="card" data-delay="100">
-          <div class="card-icon" style="--icon-bg:#e3f2fd; --icon-color:#1565c0;">🎮</div>
+          <div class="card-icon" style="--icon-bg:#e3f2fd;--icon-color:#1565c0;">🎮</div>
           <h3 class="card-title">Eco-Desafío Gamer</h3>
           <p class="card-desc">Un viernes al mes: ¡competencia de reciclaje por equipos! El equipo ganador elige el juego de mesa y un premio de cafetería. ¡Recicla y gana!</p>
           <span class="eco-badge">🌍 Factor Eco: convierte el reciclaje en diversión con recompensa</span>
         </article>
-
-        <!-- CARD 3 -->
         <article class="card" data-delay="200">
-          <div class="card-icon" style="--icon-bg:#fff8e1; --icon-color:#f57f17;">🧺</div>
+          <div class="card-icon" style="--icon-bg:#fff8e1;--icon-color:#f57f17;">🧺</div>
           <h3 class="card-title">Picnic Sin Huella</h3>
           <p class="card-desc">Un picnic mensual en el patio con meriendas en recipientes reutilizables. ¡Sin plástico, sin basura, solo diversión y compañerismo!</p>
           <span class="eco-badge">🌍 Factor Eco: cero plástico de un solo uso, cuidamos el patio</span>
         </article>
-
-        <!-- CARD 4 -->
         <article class="card" data-delay="300">
-          <div class="card-icon" style="--icon-bg:#f3e5f5; --icon-color:#6a1b9a;">👖</div>
+          <div class="card-icon" style="--icon-bg:#f3e5f5;--icon-color:#6a1b9a;">👖</div>
           <h3 class="card-title">Jeans Day Eco</h3>
           <p class="card-desc">En fechas especiales (Día de la Tierra, Día del Agua) usamos jeans y decoramos el salón con elementos naturales. ¡Moda y planeta, juntos!</p>
           <span class="eco-badge">🌍 Factor Eco: conecta la moda con fechas ambientales importantes</span>
         </article>
-
-        <!-- CARD 5 -->
         <article class="card" data-delay="400">
-          <div class="card-icon" style="--icon-bg:#fce4ec; --icon-color:#c62828;">🗺️</div>
+          <div class="card-icon" style="--icon-bg:#fce4ec;--icon-color:#c62828;">🗺️</div>
           <h3 class="card-title">Eco-Rally Saber</h3>
-          <p class="card-desc">Búsqueda del tesoro con pistas de matemáticas, ciencias, español e inglés por el colegio. Pistas en papel reciclado o pizarras reutilizables. ¡Aprende jugando!</p>
+          <p class="card-desc">Búsqueda del tesoro con pistas de matemáticas, ciencias, español e inglés por el colegio. Pistas en papel reciclado o pizarras reutilizables.</p>
           <span class="eco-badge">🌍 Factor Eco: aventura académica de bajo impacto ambiental</span>
         </article>
-
-        <!-- CARD 6 – Liderazgo Real (destacada) -->
         <article class="card card-featured" data-delay="500">
-          <div class="card-icon" style="--icon-bg:rgba(255,255,255,0.15); --icon-color:#fff;">✅</div>
+          <div class="card-icon" style="--icon-bg:rgba(255,255,255,0.15);--icon-color:#fff;">✅</div>
           <h3 class="card-title">Liderazgo Real</h3>
           <p class="card-desc">Organizado, responsable y apasionado por la tecnología. Haré que cada voz del salón sea escuchada por la profe Catalina.</p>
           <span class="eco-badge eco-badge-light">🌱 Compromiso real, todos los días</span>
         </article>
-
       </div>
     </div>
   </section>
 
-  <!-- ═══════════════════════════════════════════
-       ¿POR QUÉ YO?
-  ═══════════════════════════════════════════ -->
+  <!-- ═══ ¿POR QUÉ YO? ═══ -->
   <section class="why-me" id="porque-yo">
     <div class="container">
       <div class="section-header">
@@ -161,7 +164,6 @@
         <h2 class="section-title">¿Por qué Sebastián?</h2>
         <div class="section-line"></div>
       </div>
-
       <div class="qualities-grid">
         <div class="quality-card" data-delay="0">
           <div class="quality-icon">📋</div>
@@ -179,8 +181,6 @@
           <p>Amo la tecnología y la naturaleza. Uso recursos digitales para cuidar el planeta, no para contaminarlo.</p>
         </div>
       </div>
-
-      <!-- Barra de habilidades visual y simple -->
       <div class="skills-bar-wrap">
         <div class="skill-row">
           <span class="skill-label">🌱 Amor por el planeta</span>
@@ -206,36 +206,31 @@
     </div>
   </section>
 
-  <!-- ═══════════════════════════════════════════
-       CTA / VOTA
-  ═══════════════════════════════════════════ -->
+  <!-- ═══ CTA ═══ -->
   <section class="cta" id="vota">
     <div class="cta-blob"></div>
     <div class="container cta-inner">
       <div class="cta-emoji">🗳️</div>
       <h2 class="cta-title">¿Contamos con tu voto?</h2>
       <p class="cta-sub">
-        Este <strong>martes 24 de febrero de 2026</strong>, elige a alguien que piensa<br />
-        en ti, en el salón y en la naturaleza.
+        Cuando llegue el gran día de elegir a tu representante,<br />
+        elige a alguien que piensa en ti, en el salón y en la naturaleza. 🌿<br />
+        <strong>¡Tu voto hace la diferencia!</strong>
       </p>
       <p class="cta-slogan">"Tecnología con corazón verde y liderazgo responsable."</p>
       <div class="cta-btns">
-        <a
-          href="https://wa.me/573004947122?text=¡Hola!%20Te%20comparto%20la%20campaña%20de%20Sebastián%20Restrepo%20Luna%2C%20candidato%20a%20Representante%20de%20Grupo%203°A%20del%20Colegio%20Benedictino%20de%20Santa%20María%20%F0%9F%8C%BF%20%7C%20Eco-Líder%202026"
-          target="_blank"
-          rel="noopener noreferrer"
-          class="btn btn-whatsapp"
-        >
-          📲 Compartir con WhatsApp
-        </a>
+        <!-- Botón WhatsApp con feedback animado (ya no es enlace sino button) -->
+        <button class="btn btn-whatsapp" id="btnWhatsapp">
+          <span class="wa-icon">📲</span>
+          <span class="wa-default">Compartir con WhatsApp</span>
+          <span class="wa-thanks">¡Gracias por apoyar a Sebastián! 🌿❤️</span>
+        </button>
         <a href="#propuestas" class="btn btn-outline-dark">Ver propuestas de nuevo</a>
       </div>
     </div>
   </section>
 
-  <!-- ═══════════════════════════════════════════
-       FOOTER
-  ═══════════════════════════════════════════ -->
+  <!-- ═══ FOOTER ═══ -->
   <footer class="footer">
     <div class="container footer-inner">
       <div class="footer-logo-wrap">
