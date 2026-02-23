@@ -219,13 +219,29 @@
       </p>
       <p class="cta-slogan">"Tecnología con corazón verde y liderazgo responsable."</p>
       <div class="cta-btns">
-        <!-- Botón WhatsApp con feedback animado (ya no es enlace sino button) -->
-        <button class="btn btn-whatsapp" id="btnWhatsapp">
-          <span class="wa-icon">📲</span>
-          <span class="wa-default">Compartir con WhatsApp</span>
-          <span class="wa-thanks">¡Gracias por apoyar a Sebastián! 🌿❤️</span>
+        <!-- Botón de apoyo con modal de agradecimiento -->
+        <button class="btn btn-support" id="btnSupport">
+          <span class="support-icon">🌟</span>
+          <span class="support-text">¡Gracias por Apoyar a Sebastián!</span>
         </button>
         <a href="#propuestas" class="btn btn-outline-dark">Ver propuestas de nuevo</a>
+      </div>
+
+      <!-- Modal de agradecimiento -->
+      <div class="thanks-modal" id="thanksModal" role="dialog" aria-modal="true" aria-label="Mensaje de agradecimiento">
+        <div class="thanks-modal-inner">
+          <div class="thanks-confetti" id="thanksConfetti"></div>
+          <div class="thanks-emoji">🌿🏆🌿</div>
+          <h3 class="thanks-title">¡Gracias por tu apoyo!</h3>
+          <p class="thanks-msg">
+            <strong>Sebastián Restrepo Luna</strong><br />
+            <span class="thanks-role">Representante · Tercero A · 2026</span>
+          </p>
+          <p class="thanks-sub">
+            "Tecnología con corazón verde<br />y liderazgo responsable." 🌱
+          </p>
+          <button class="thanks-close" id="thanksClose">Cerrar ✕</button>
+        </div>
       </div>
     </div>
   </section>

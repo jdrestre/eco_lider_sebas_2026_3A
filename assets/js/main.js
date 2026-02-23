@@ -209,24 +209,61 @@ const skillObs = new IntersectionObserver((entries) => {
 const skillsWrap = document.querySelector('.skills-bar-wrap');
 if (skillsWrap) skillObs.observe(skillsWrap);
 
-// ─── 6. BOTÓN WHATSAPP — feedback animado ────────
-const btnWa = document.getElementById('btnWhatsapp');
-if (btnWa) {
-  btnWa.addEventListener('click', () => {
-    // Abrir WhatsApp
-    const waURL = 'https://wa.me/573004947122?text=' +
-      encodeURIComponent(
-        '¡Hola! 🌿 Te comparto la campaña de Sebastián Restrepo Luna, ' +
-        'candidato a Representante de Grupo 3°A del Colegio Benedictino de Santa María. ' +
-        'Eco-Líder 2026 👉 https://jdrestre.github.io/eco_lider_sebas_2026_3A/'
-      );
-    window.open(waURL, '_blank');
+// ─── 6. BOTÓN APOYO — modal de agradecimiento ────
+const btnSupport  = document.getElementById('btnSupport');
+const thanksModal = document.getElementById('thanksModal');
+const thanksClose = document.getElementById('thanksClose');
+const confettiWrap = document.getElementById('thanksConfetti');
 
-    // Animación de gracias
-    btnWa.classList.add('fired');
-    setTimeout(() => btnWa.classList.remove('fired'), 3500);
+const CONFETTI_COLORS = ['#2d6a4f','#74c69d','#f4d35e','#ffffff','#1565c0','#a5d6a7'];
+
+function launchConfetti() {
+  if (!confettiWrap) return;
+  confettiWrap.innerHTML = '';
+  for (let i = 0; i < 38; i++) {
+    const el = document.createElement('div');
+    el.className = 'confetti-piece';
+    el.style.cssText = `
+      left: ${Math.random() * 100}%;
+      top: 0;
+      background: ${CONFETTI_COLORS[Math.floor(Math.random() * CONFETTI_COLORS.length)]};
+      width: ${Math.random() * 8 + 6}px;
+      height: ${Math.random() * 8 + 6}px;
+      border-radius: ${Math.random() > 0.5 ? '50%' : '2px'};
+      animation-duration: ${Math.random() * 1.5 + 1.2}s;
+      animation-delay: ${Math.random() * 0.6}s;
+    `;
+    confettiWrap.appendChild(el);
+  }
+}
+
+function openModal() {
+  thanksModal.classList.add('open');
+  document.body.style.overflow = 'hidden';
+  launchConfetti();
+}
+
+function closeModal() {
+  thanksModal.classList.remove('open');
+  document.body.style.overflow = '';
+}
+
+if (btnSupport)  btnSupport.addEventListener('click', openModal);
+if (thanksClose) thanksClose.addEventListener('click', closeModal);
+
+// Cierra al hacer click en el fondo oscuro
+if (thanksModal) {
+  thanksModal.addEventListener('click', e => {
+    if (e.target === thanksModal) closeModal();
   });
 }
+
+// Cierra con Escape
+document.addEventListener('keydown', e => {
+  if (e.key === 'Escape' && thanksModal && thanksModal.classList.contains('open')) {
+    closeModal();
+  }
+});
 
 // ─── 7. ACTIVE NAV LINK on scroll ────────────────
 const sections   = document.querySelectorAll('section[id]');
